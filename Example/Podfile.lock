@@ -1,0 +1,16 @@
+PODS:
+  - OperationKit (0.1.0)
+
+DEPENDENCIES:
+  - OperationKit (from `../`)
+
+EXTERNAL SOURCES:
+  OperationKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  OperationKit: c5949d8a935e29e5884b839639584d01ad1c9f93
+
+PODFILE CHECKSUM: 272d41408da398a1d24272e7570e5b0990dc9314
+
+COCOAPODS: 1.6.1
