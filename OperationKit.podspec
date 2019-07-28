@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'OperationKit'
-  s.version          = '0.1.0'
-  s.summary          = 'A set of classes and protocols for compounding, linking, buffering and chaining AsyncOperations.'
+  s.version          = '1.0.0'
+  s.summary          = 'AsyncOperation classes and protocols'
 
   s.description      = <<-DESC
 A set of classes and protocols for compounding, linking, buffering and chaining AsyncOperations.
