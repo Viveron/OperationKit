@@ -49,6 +49,12 @@ open class AsyncCompoundOperation: AsyncOperation, CompoundOperation, Cancelable
         queue.addOperation(operation)
         operation.delegate = self
     }
+
+    open func addOperations(_ operations: [Operation & ChainableOperation]) {
+        operations.forEach {
+            addOperation($0)
+        }
+    }
     
     open func completeOperation(data: Any? = nil, error: Error? = nil) {
         lock.lock()
