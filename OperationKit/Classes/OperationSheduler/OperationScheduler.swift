@@ -10,7 +10,7 @@ import Foundation
 
 open class OperationScheduler {
     
-    private let queue: OperationQueue
+    public let queue: OperationQueue
     
     public init() {
         queue = OperationQueue()
