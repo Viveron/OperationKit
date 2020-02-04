@@ -9,7 +9,8 @@
 import Foundation
 
 open class AsyncCompoundOperation: AsyncOperation, CompoundOperation, CancelableOperation, ChainableOperationDelegate {
-    
+
+    private let lock: NSRecursiveLock
     private let queue: OperationQueue
     
     open var maxConcurrentOperationsCount: Int = 1 {
@@ -25,6 +26,7 @@ open class AsyncCompoundOperation: AsyncOperation, CompoundOperation, Cancelable
     open var queueOutput: CompoundOperationQueueOutput?
     
     public override init() {
+        lock = NSRecursiveLock()
         queue = OperationQueue()
         queue.name = .uniqueQueueName(isAsyncQueue: true)
         queue.maxConcurrentOperationCount = maxConcurrentOperationsCount
@@ -49,6 +51,15 @@ open class AsyncCompoundOperation: AsyncOperation, CompoundOperation, Cancelable
     }
     
     open func completeOperation(data: Any? = nil, error: Error? = nil) {
+        lock.lock()
+        defer {
+            lock.unlock()
+        }
+
+        guard state != .isFinished else {
+            return
+        }
+
         queue.isSuspended = true
         queue.cancelAllOperations()
         complete()
@@ -59,6 +70,11 @@ open class AsyncCompoundOperation: AsyncOperation, CompoundOperation, Cancelable
     // MARK: - ChainableOperationDelegate
     
     open func didCompleteChainableOperation(error: Error?) {
+        lock.lock()
+        defer {
+            lock.unlock()
+        }
+
         let data = queueOutput?.obtainOperationQueueOutputData()
         
         if data != nil || error != nil {
