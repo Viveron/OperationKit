@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'OperationKit'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'AsyncOperation classes and protocols'
 
   s.description      = <<-DESC

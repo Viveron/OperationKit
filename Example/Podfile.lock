@@ -1,5 +1,5 @@
 PODS:
-  - OperationKit (0.1.0)
+  - OperationKit (1.0.1)
 
 DEPENDENCIES:
   - OperationKit (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  OperationKit: 05cf5841ff0fd59bdf3c5950f5b2d208eeb6ae88
+  OperationKit: 009d73b9d23c1564281c95ff99a5277bfa7c71ed
 
 PODFILE CHECKSUM: 9eb083a9ad6833abba6f71d23bcb6aad1a4167ac
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.8.4
